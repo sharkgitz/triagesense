@@ -9,7 +9,7 @@ from typing import Callable, Optional
 
 from classifier import generate_response, retrieve_kb
 from config import CONFIDENCE_THRESHOLD
-from schema import Classification, RemediationResult, RequestType
+from schema import Classification, RemediationResult, RequestType, Urgency
 
 
 def _default_id_factory() -> str:
@@ -110,7 +110,17 @@ DISPATCH = {
 
 
 def _should_human_review(cls: Classification) -> bool:
-    if cls.request_type in (RequestType.UNKNOWN, RequestType.ESCALATION):
+    # Policy enforced in code, identical for the deterministic and agentic paths:
+    # financial disputes, complaints/escalations, and anything unknown or
+    # critical goes to a human. Routine enquiries and service requests, when the
+    # classifier is confident, are auto-handled.
+    if cls.request_type in (
+        RequestType.BILLING_DISPUTE,
+        RequestType.ESCALATION,
+        RequestType.UNKNOWN,
+    ):
+        return True
+    if cls.urgency == Urgency.CRITICAL:
         return True
     return cls.confidence < CONFIDENCE_THRESHOLD
 

@@ -148,24 +148,26 @@ def plan_actions(
 
 
 def apply_governance(plan: AgentPlan, cls: Classification) -> AgentPlan:
-    needs_human = (
-        cls.request_type == RequestType.UNKNOWN
-        or cls.confidence < CONFIDENCE_THRESHOLD
-        or cls.urgency == Urgency.CRITICAL
-    )
+    # The human-review decision is policy, enforced in code, not left to the model.
+    needs_human = _should_human_review(cls)
 
     steps = list(plan.planned_steps)
 
     if needs_human:
+        # High-risk case: no auto-send, and a human must be in the loop.
         steps = [s for s in steps if s.tool != Tool.KB_RESPONSE]
         if not any(s.tool == Tool.FLAG_HUMAN for s in steps):
             steps.insert(
                 0,
                 PlannedStep(
                     tool=Tool.FLAG_HUMAN,
-                    why="Governance: low confidence, critical urgency, or unknown type requires human review.",
+                    why="Governance: this case type or low confidence requires human review.",
                 ),
             )
+    else:
+        # Routine case: drop any human-review flag the model over-added, so
+        # confident enquiries and service requests are actually auto-handled.
+        steps = [s for s in steps if s.tool != Tool.FLAG_HUMAN]
 
     return AgentPlan(reasoning=plan.reasoning, planned_steps=steps)
 
@@ -255,8 +257,9 @@ def run_agent(
             raise AgentPlanError("Empty plan after governance - no valid steps to execute")
 
         id_factory = id_factory or _default_id_factory
-        executed_tools = [s.tool for s in plan.planned_steps]
-        human_in_loop = _should_human_review(cls) or Tool.FLAG_HUMAN in executed_tools
+        # Human-in-loop is decided by policy (same rule as the deterministic path),
+        # not by whatever the model happened to plan.
+        human_in_loop = _should_human_review(cls)
 
         return RemediationResult(
             case_id=id_factory(),

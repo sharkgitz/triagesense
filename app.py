@@ -259,7 +259,8 @@ with tab1:
 
         if classification.extracted_fields:
             _section("Extracted fields")
-            st.json(classification.extracted_fields)
+            for _k, _v in classification.extracted_fields.items():
+                st.markdown(f"- **{_k.replace('_', ' ').title()}:** {_v}")
 
         if agentic and (result.agent_reasoning or result.planned_tools):
             with st.expander("Agent reasoning", expanded=True):
@@ -274,7 +275,16 @@ with tab1:
             st.markdown(f"{i}. {step}")
 
         _section("Outputs")
-        st.json(result.outputs)
+        for _k, _v in result.outputs.items():
+            if isinstance(_v, bool):
+                _v = "Yes" if _v else "No"
+            elif isinstance(_v, list):
+                _v = "; ".join(str(x) for x in _v)
+            if _k == "draft_response":
+                st.markdown("**Draft response to member**")
+                st.markdown(f'<div class="ts-card">{_v}</div>', unsafe_allow_html=True)
+            else:
+                st.markdown(f"**{_k.replace('_', ' ').title()}:** {_v}")
 
         st.caption(f"Case ID: {result.case_id} · {result.timestamp}")
 
