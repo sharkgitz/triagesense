@@ -20,9 +20,10 @@ The system does administrative triage only. It does not give clinical or medical
                          |   fallback)          |
                          +----------+-----------+
                                     |
-                          confidence < 0.60?
-                          OR type == UNKNOWN?
-                          OR type == ESCALATION?
+                          human review policy:
+                          BILLING / ESCALATION / UNKNOWN,
+                          OR urgency == CRITICAL,
+                          OR confidence < 0.60?
                              |              |
                             yes             no
                              |              |
@@ -83,7 +84,7 @@ pytest -q
 
 A fifth bucket, `Unknown/Needs Human Review`, catches anything the classifier cannot confidently place and always routes to a human.
 
-The confidence gate is `CONFIDENCE_THRESHOLD = 0.60` in `config.py`. Below that value, or for the `UNKNOWN` and `Escalation` types, `human_in_loop` is set to `True` regardless of branch.
+Whether a case needs a human is a policy decided in code (`workflows.py::_should_human_review`), and the same rule applies to both the deterministic and agentic paths. A human is required for billing disputes, complaints and escalations, unknown requests, any case with critical urgency, and any case below the confidence threshold (`CONFIDENCE_THRESHOLD = 0.60` in `config.py`). Confident enquiries and service requests are auto-handled. Keeping this decision in code, rather than letting the model decide per request, is what makes the behaviour consistent and auditable.
 
 ### One end-to-end example per branch
 
@@ -140,7 +141,7 @@ Tab 1 has an "Agentic mode (governed)" toggle, on by default. With it on, instea
 The flow is: the agent proposes a plan, governance enforces safety invariants in code, audited tools execute, and any failure falls back to the deterministic path.
 
 1. `plan_actions()` asks the LLM for `{reasoning, planned_steps}` as JSON. Any tool name not in the enum does not survive parsing.
-2. `apply_governance()` is a pure, unit-tested function that rewrites the plan in code and does not trust the model's judgment. If the request is `UNKNOWN`, below the confidence threshold, or `Critical` urgency, it removes any auto-resolving tool (`generate_kb_response`) and forces `flag_human_review` into the plan.
+2. `apply_governance()` is a pure, unit-tested function that rewrites the plan in code and does not trust the model's judgment. If the case needs a human (per `_should_human_review`: billing, escalation, unknown, critical urgency, or low confidence), it removes any auto-resolving tool (`generate_kb_response`) and forces `flag_human_review` into the plan. If the case does not need a human, it strips any `flag_human_review` the model over-added, so confident enquiries and service requests are actually auto-handled.
 3. Each surviving tool runs through a small audited executor. The ordered `planned_tools` and the model's `reasoning` are shown in an "Agent reasoning" expander above the steps and outputs, so the trace is visible.
 4. If anything fails (an unparseable plan after one retry, an LLM error, a validation error), the request falls back to the deterministic `workflows.remediate()`, so it is never left unhandled.
 
