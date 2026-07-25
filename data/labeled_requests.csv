@@ -1,0 +1,72 @@
+text,true_type
+"I was charged twice for the same claim on my last statement, please refund the extra amount.",Billing/Claim Dispute
+"My member ID is 458219003 and I was overcharged $150 on my last bill, this needs to be fixed.",Billing/Claim Dispute
+"There's a billing error on invoice #77291, I'm being billed for a service I never received.",Billing/Claim Dispute
+"I think I was double-billed for my March premium payment, can someone look into this?",Billing/Claim Dispute
+"The amount deducted from my account does not match my Explanation of Benefits, please correct this dispute.",Billing/Claim Dispute
+"Requesting a dispute review for claim #90123, the copay charged is higher than my plan states.",Billing/Claim Dispute
+"I was billed $320 for a visit that should have been fully covered, please investigate and refund.",Billing/Claim Dispute
+"My statement shows a charge from a provider I never visited, this looks like a billing mistake.",Billing/Claim Dispute
+"Please reverse the erroneous charge of $89 on my account, member ID 112233445.",Billing/Claim Dispute
+"I paid my premium but I'm still being billed as if it's overdue, this is frustrating and wrong.",Billing/Claim Dispute
+"Overcharged again this month! I demand my money back for the extra fee applied to my claim.",Billing/Claim Dispute
+"There is a discrepancy between what I was quoted and what was actually charged for my procedure.",Billing/Claim Dispute
+"My claim payment was short by $45 compared to what my plan document says I owe, please dispute this.",Billing/Claim Dispute
+"Can you check the status of the claim I submitted last week for my physical therapy sessions?",Claim Status/Coverage Enquiry
+"I want to know if my upcoming MRI is covered under my current plan before I schedule it.",Claim Status/Coverage Enquiry
+"What is the typical processing time for a submitted claim? Mine has been pending for a while.",Claim Status/Coverage Enquiry
+"Is dermatology covered under my benefits plan, and what would my copay be?",Claim Status/Coverage Enquiry
+"Could you confirm whether claim number 55210 has been processed yet?",Claim Status/Coverage Enquiry
+"I'd like to understand my deductible and how much of it I've already met this year.",Claim Status/Coverage Enquiry
+"Does my plan cover physical therapy visits, and how many sessions per year are allowed?",Claim Status/Coverage Enquiry
+"My member ID is 887766554, can you tell me the status of my claim from last month?",Claim Status/Coverage Enquiry
+"How long does it usually take to receive an Explanation of Benefits after a claim is submitted?",Claim Status/Coverage Enquiry
+"I need to know if my current plan covers out-of-network specialists.",Claim Status/Coverage Enquiry
+"What's my current coverage status for outpatient surgery procedures?",Claim Status/Coverage Enquiry
+"Can you check if my claim for the emergency room visit was approved yet?",Claim Status/Coverage Enquiry
+"Just wondering what my benefits summary says about mental health coverage.",Claim Status/Coverage Enquiry
+"I need a prior authorization for an MRI scan scheduled next month, member ID 334455667.",Prior-Auth/Appointment Service Request
+"Please help me schedule an appointment with a cardiologist as soon as possible.",Prior-Auth/Appointment Service Request
+"Requesting pre-authorization for a knee surgery procedure planned for August 15th.",Prior-Auth/Appointment Service Request
+"I need to book a follow-up appointment with my primary care physician next week.",Prior-Auth/Appointment Service Request
+"Can you process the prior-auth request for my physical therapy sessions, procedure code PT-204?",Prior-Auth/Appointment Service Request
+"I need authorization approval before my scheduled colonoscopy on the 20th.",Prior-Auth/Appointment Service Request
+"Please schedule a specialist visit for my ongoing back pain treatment.",Prior-Auth/Appointment Service Request
+"My doctor recommended a CT scan, and I need prior approval before it happens.",Prior-Auth/Appointment Service Request
+"I would like to set up an appointment for my annual wellness checkup.",Prior-Auth/Appointment Service Request
+"Requesting authorization for outpatient surgery, member ID 998877665, procedure scheduled for next month.",Prior-Auth/Appointment Service Request
+"Can I get pre-approval for a sleep study procedure before scheduling it?",Prior-Auth/Appointment Service Request
+"I need to reschedule my appointment with the orthopedic specialist to a later date.",Prior-Auth/Appointment Service Request
+"Please arrange prior authorization for my upcoming physical therapy evaluation.",Prior-Auth/Appointment Service Request
+"This is the third time I've called about the same issue and nobody has helped me, I'm furious and considering legal action.",Complaint/Urgent Escalation
+"I'm having severe chest pain right now, I don't know what to do.",Complaint/Urgent Escalation
+"Your service is absolutely terrible, I've been on hold for two hours and no one will help me.",Complaint/Urgent Escalation
+"This is an emergency, my father is having trouble breathing and I need help immediately.",Complaint/Urgent Escalation
+"I am extremely dissatisfied with how my case has been handled and I want to speak to a supervisor now.",Complaint/Urgent Escalation
+"I've filed three complaints already and nothing has changed, I'm contacting my lawyer if this isn't resolved today.",Complaint/Urgent Escalation
+"This company has been negligent with my care and I demand immediate action or I will escalate this legally.",Complaint/Urgent Escalation
+"I feel like I'm dying, this pain is unbearable and I need someone to help right now.",Complaint/Urgent Escalation
+"Absolutely disgusted with the way I was treated by your representative, this needs urgent attention.",Complaint/Urgent Escalation
+"My mother collapsed and we need to know what to do immediately, please respond urgently.",Complaint/Urgent Escalation
+"I have been ignored for weeks and this is unacceptable, escalate this to a manager immediately.",Complaint/Urgent Escalation
+"This is urgent - I think I'm having an allergic reaction and need guidance right now.",Complaint/Urgent Escalation
+"asdkjaslkdj alsdkj",Unknown/Needs Human Review
+"???",Unknown/Needs Human Review
+"hi",Unknown/Needs Human Review
+"I don't know, maybe something about my account? Not sure what I need.",Unknown/Needs Human Review
+"Can someone call me back about the thing I mentioned before?",Unknown/Needs Human Review
+"This is fine I guess, whatever works for you regarding my situation.",Unknown/Needs Human Review
+"I'm not happy about the wait time for my claim status but I guess it's covered anyway, not sure what to do.",Claim Status/Coverage Enquiry
+"I was told this would be covered but now I'm getting billed - is this a coverage issue or a billing mistake?",Billing/Claim Dispute
+"My appointment request was never confirmed and now I'm also seeing a strange charge on my account.",Prior-Auth/Appointment Service Request
+"hi, can someone help me with something on my account? not sure who to ask","Unknown/Needs Human Review"
+"i think there might be a mistake somewhere but honestly im not totally sure what it is","Unknown/Needs Human Review"
+"thanks, that's all for now","Unknown/Needs Human Review"
+"URGENT!!! nobody has helped me and I've been waiting forever, this is absolutely ridiculous","Complaint/Urgent Escalation"
+"I'm seriously considering switching providers because of how badly this has been handled","Complaint/Urgent Escalation"
+"Is my upcoming MRI covered, and also why was I charged for the last one?","Claim Status/Coverage Enquiry"
+"Can you confirm my appointment for next Tuesday and also email me my benefits summary?","Prior-Auth/Appointment Service Request"
+"My prior auth for the scan - has it been approved yet? It's been two weeks now","Prior-Auth/Appointment Service Request"
+"You charged me for something I didn't get, and separately I need to book a follow-up, please sort it out","Billing/Claim Dispute"
+"The premium payment - when exactly is that due again? I forget the date","Claim Status/Coverage Enquiry"
+"was told my procedure would be covered, now theres a bill - is this a coverage thing or a billing error?","Billing/Claim Dispute"

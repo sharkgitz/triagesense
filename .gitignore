@@ -1,0 +1,9 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets and local data
+.env
+.streamlit/secrets.toml
+triage_log.db
