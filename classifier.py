@@ -51,19 +51,24 @@ Rules:
   legal action, and any emergency/clinical wording are Critical.
 
 Disambiguation rules (apply in this order):
-1. If the member disputes a charge, says they were billed wrongly, or asks for a
+1. If the member expresses strong dissatisfaction, anger, or frustration with the
+   service, threatens to leave or cancel, or threatens legal action - even alongside
+   a routine question - classify as "Complaint/Urgent Escalation". A frustrated or
+   churning member is an escalation, not a routine enquiry.
+2. If the member disputes a charge, says they were billed wrongly, or asks for a
    refund, classify as "Billing/Claim Dispute" - even if they ALSO ask a coverage
    or status question in the same message. The disputed charge is the actionable item.
-2. A question about the STATUS of a prior authorization or an appointment
+3. A question about the STATUS of a prior authorization or an appointment
    (e.g. "is my prior auth approved yet?") is a "Prior-Auth/Appointment Service
    Request", NOT a claim enquiry.
-3. "Claim Status/Coverage Enquiry" is ONLY for clear informational questions about
-   claim status, coverage, or benefits with no charge dispute and no action request.
-4. If the message is vague and names no specific request (e.g. "I need help with
+4. "Claim Status/Coverage Enquiry" is ONLY for clear informational questions about
+   claim status, coverage, or benefits with no complaint, no charge dispute, and no action request.
+5. If the message is vague and names no specific request (e.g. "I need help with
    something", "not sure who to ask", "there might be a mistake somewhere"), use
    "Unknown/Needs Human Review" with low confidence. Do NOT default to a claim enquiry.
 
 Examples (illustrative, follow the rules above):
+- "I wanted to ask my claim status, but this has been a joke and I'm done with you" -> Complaint/Urgent Escalation
 - "I was told my surgery was covered but now there's a charge for it" -> Billing/Claim Dispute
 - "Has my prior authorization for the CT scan gone through yet?" -> Prior-Auth/Appointment Service Request
 - "What's the status of the claim I filed last week?" -> Claim Status/Coverage Enquiry
